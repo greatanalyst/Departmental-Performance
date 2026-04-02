@@ -1,6 +1,6 @@
 # Departmental Performance  : Building An Interactive Power BI Dashboard For Staff Attendance 
 ## Table Of Content
-- [Description](#description) 
+- [Description](#description)
 - [Business Introduction](#business-introduction)
 - [Business Problem](#business-problem)
 - [Aim of the Project](#aim-of-the-project)
@@ -11,39 +11,51 @@
 
 
 ### Description 
+The Project Review Overview Dashboard is a data visualization project built using Power BI and SQL  to analyze and monitor organizational project performance. It provides a comprehensive view of project budgets, costs, departmental contributions, and employee-level insights in a single interactive interface.
 
-This project features an interactive HR Analytics Dashboard designed to track and analyze employee attendance patterns over a three-month period (April 2022 – June 2022). The goal of this dashboard is to provide HR managers with actionable insights into workforce presence, remote work trends, and sick leave patterns to improve operational efficiency.
+The dashboard enables users to track how financial resources are allocated across departments such as Sales, Marketing, Engineering, IT, and Human Resources, while also comparing project status (completed vs. upcoming). It integrates key business metrics like capital investment, salary costs, and project budgets to support effective decision-making.
 
-<img width="1183" height="663" alt="image" src="https://github.com/user-attachments/assets/a6c9eb52-ae63-4a03-a17c-174e72af1d95" />
+With dynamic filtering options and detailed visualizations, the project helps stakeholders identify inefficiencies, monitor spending patterns, and optimize resource allocation. Ultimately, it serves as a decision-support tool for improving financial planning, enhancing operational performance, and ensuring better project management across the organization.
+
+![WhatsApp Image 2026-04-02 at 1 43 58 PM](https://github.com/user-attachments/assets/a810c319-34a6-4c62-8197-e36c34017419)
+
 
 ### Business Introduction
 
-In the modern corporate landscape, human capital is an organization's most valuable asset. Managing a workforce effectively requires more than just tracking clock-ins; it requires a deep understanding of attendance patterns, remote work flexibility, and employee wellness.
-This project introduces an HR Attendance Analytics solution designed for data-driven HR departments. The dashboard serves as a centralized hub to monitor employee engagement levels across multiple dimensions, providing a macro view of organizational health while allowing for micro-drills into individual performance and attendance reliability.
+This project focuses on analyzing organizational project performance across multiple departments. It provides a centralized view of project budgets, costs, employee contributions, and departmental efficiency. The dashboard is designed to support decision-makers in monitoring financial performance and optimizing resource allocation.
 
 ### Business Problem
-- Manually tracking attendance through spreadsheets often leads to "data silos" where trends remain hidden. The organization faced several key challenges that this project aims to solve:
-
-- Lack of Visibility into Hybrid Work Trends: With a growing Work-From-Home (WFH) culture, the management lacked clear data on how many employees were remote on specific days, making office space and resource planning difficult.
-
-- Unidentified Attendance Dips: Without visual trend lines, the HR team could not easily identify specific periods (like the sharp drop to 77.92% in May) where attendance plummeted, preventing them from investigating root causes such as seasonal illness or morale issues.
-
-- Inefficient Sick Leave Monitoring: Identifying "at-risk" employees who frequently take sick leave was a manual, time-consuming process. The business needed a way to instantly flag high SL Count % to provide proactive support or performance reviews.
-
-- Inconsistent Weekly Coverage: Management needed to know if certain days of the week (e.g., Fridays) suffered from lower presence, which could impact client deliverables and team collaboration.
-
+- Management often struggles to see the "big picture" when individual employee data is siloed from project financial data. Specifically, the company needed to answer:
+- Are departments staying within their allocated project budgets?
+- How does salary cost compare to the actual capital generated or spent by each department?
+- Lack of visibility into project spending across departments
+- Difficulty tracking budget utilization and cost overruns
+- Inefficient allocation of resources and capital
+- Limited insight into employee-level contributions and performance
+- Challenges in comparing project status (completed vs. ongoing)
+- Which departments are currently over-utilizing resources on "upcoming" vs. "completed" projects?
+  
 ### Aim of the Project
-The primary objective of this analysis is to transform raw attendance logs into a strategic asset for HR decision-making. Specifically, the analysis aims to:
+1. Identify Departments and Projects in the Red: Understand which departments or projects are over budget or underperforming, so we can take corrective action.
 
-- Optimize Hybrid Work Models: Determine the impact of Work From Home policies on overall productivity and office occupancy.
+2. Data Organization: Ensure that data from various sources (e.g., employee information, salary data, department budgets, and project details) is structured correctly and accessible for reporting
 
-- Enhance Workforce Reliability: Identify patterns of absenteeism or frequent sick leave (SL) to trigger proactive wellness interventions.
+3. Power BI Dashboard Development: Collaborate with us to create a comprehensive dashboard that provides visibility into employee performance, salary distribution, and departmental project management.:
 
-- Data-Driven Scheduling: Analyze attendance by day of the week to ensure adequate staffing levels for client-facing operations.
 
-- Individual Performance Tracking: Provide managers with a transparent, data-backed view of employee presence for quarterly reviews.
   
 ### Solution
+
+
+This project followed a standard Data Analysis Expression (DAX) and ETL (Extract, Transform, Load) workflow.
+
+Step 1: Data Cleaning Tool: Microsoft SQL
+- Source Connection: Imported raw attendance data (CSV/Excel) containing daily status codes into SQL platform (project_id,project_name,project_budget,project_start_date,project_end_date,department_id
+)(assignment_id	employee_id	project_id) etc..
+
+
+-Joined Tables and Queried the data : 
+The following Microsoft SQL queries  was used to query the data and formulate a table
 
 ` with project_status as (
 select
@@ -79,98 +91,62 @@ on pa.employee_id = e.employee_id
 join project_status p
 on p.project_id = pa.project_id `
 
-This project followed a standard Data Analysis Expression (DAX) and ETL (Extract, Transform, Load) workflow.
 
-Step 1: Data Connection & Cleaning Tool: Power Query (Power BI)
-- Source Connection: Imported raw attendance data (CSV/Excel) containing daily status codes (P = Present, WFH = Work From Home, SL = Sick Leave).
-
-- Unpivoting Columns: Since attendance data is often recorded with dates as headers, I unpivoted the date columns to create a "Long Format" table suitable for analysis.
-
-- Data Typing: Ensured dates were recognized as Date types and status codes as Text.##### Key Features
-
-Step 2: Data Modeling
-- Calendar Table: Created a dedicated Date Table to allow for time-intelligence functions (filtering by Month, Weekday, and Date).
+Step 2:Power BI 
+- Calendar Table: Created a dedicated Date Table to allow for time-intelligence functions (filtering byEmploy_ID, Headshot, and Department).
 
 - Relationships: Established a One-to-Many relationship between the Employee Master list and the Attendance Fact table.
+
+  
 
 Step 3: DAX Measure Development
 
  I authored several custom measures to calculate the KPIs seen on the dashboard:
+ <img width="1002" height="777" alt="image" src="https://github.com/user-attachments/assets/642fd282-e3b3-44bc-8db2-e883464cc3ae" />
+ <img width="1910" height="768" alt="image" src="https://github.com/user-attachments/assets/e63bfab4-6b60-4d9c-8cb5-0731239843c5" />
 
-- Total working Days:           
-  Total_working_days = 
-  Var totaldays = COUNT('Final Data'[Value])
-  VAR nonworkingdays = CALCULATE(COUNT('Final Data'[Value]), 'Final Data'[Value] IN {"WO", "HO"})
-  RETURN
-  totaldays-nonworkingdays
+### 📏 Metrics Defined
 
-- Presnt Day:
-  [Present Day ] = 
-  VAR Presentday = CALCULATE(COUNT('Final Data'[Value]), 'Final Data'[Value] = "p")
-  RETURN
-  Presentday + [WFH COUNT M]
-
-- Presence %:
-
-  Presence % = DIVIDE([Present Day ],[Total_working_days])
-
-- Work From Home Count:
+- Total Capital Invested: $1.29M
+- Total Project Budget: $60K
+- Project Cost: Cost incurred per department/project
+- Salary Cost: Employee-related expenses
+- Departmental Contribution (%): Share of total cost by department
+- Project Status Distribution: Completed vs. Upcoming projects
+- Budget Allocation: Budget assigned per project and department
   
-  WFH COUNT M = SUM('Final Data'[WFH COUNT])
+### ⚙️ Features
 
-- Work From Home Count%:
-  
-  WFH COUNT % = DIVIDE([WFH COUNT M],[Present Day ], 0)
+- Employee Profile Card: Displays headshot, job title, and salary for quick HR reference.
 
-- Sick Leave Count:
-  
-  SL COUNT M = SUM('Final Data'[SL COUNT])
+- Donut Chart Visualization: Highlights the "Project Cost by Department," showing that Sales (26.32%) and Marketing (20.18%) are the primary cost drivers.
 
-- Sick Leave Count %:
-  
-  SL COUNT % = DIVIDE([SL COUNT M],[Present Day ], 0)
+- Departmental Goal Tracker: A tabular view linking high-level strategy (e.g., "Develop new products") directly to financial performance.
 
-Step 4: Visual Design & Interactivity
-- KPI Cards: Placed at the top for an immediate "at-a-glance" health check of the company.
-
-- Trend Analysis: Used Area Charts with trend lines to highlight volatility in attendance over the 3-month period.
-
-- Matrix Reporting: Created a drill-down table for individual employee tracking.
-
-- Slicers: Integrated "Month" slicers (Apr, May, Jun) to allow users to filter the entire dashboard by specific timeframes.
-
-### Metrics Defined
-- Presence %: The ratio of days an employee was physically or virtually present against total working days.
-
-- WFH Count %: The percentage of days an employee worked from home.
-
-- SL Count %: The frequency of sick leaves taken relative to the total period.
-
-### Features
-- Presence Tracking: Real-time monitoring of the overall presence percentage (currently at 91.83%).
-
-- Work From Home (WFH) Analysis: Tracking the percentage of staff working remotely to balance office resources.
-
-- Sick Leave (SL) Monitoring: Identifying trends in sick leave to manage wellness and backup staffing.
-
-- Temporal Trends: Area charts showing daily fluctuations, allowing for the identification of specific dates with attendance drops (e.g., significant dips in May 2022).
-
-- Granular Employee Data: A detailed table view breaking down attendance metrics by individual employee names.
-
-- Day-of-the-Week Insights: Summarized tables showing which days of the week have the highest presence or remote work frequency.
+- Ranking Bars: Horizontal bar charts showing "Project Budget by Project Name" to identify the most expensive initiatives (e.g., "Product Launch" at $80k).
 
 ###  Insights And Recommendations
-1. Investigate the "May Slump"
-The data shows a significant dip in Presence % during May 2022, reaching lows of 77.92%.
-- Action: HR should cross-reference these dates with external factors such as local public holidays, seasonal flu outbreaks, or internal company events to determine if this was an anomaly or a recurring seasonal trend.
-2. Formalize the "Friday-Monday" Hybrid Policy
-The "WFH % by Day" table shows that Fridays (13.01%) and Thursdays (11.51%) have the highest remote work rates, while Tuesdays and Wednesdays are lower.
-- Action: If the company requires high in-person collaboration, management should designate "Anchor Days" (e.g., Tuesday/Wednesday) where all staff are expected in-office, while maintaining the current flexibility for Mondays and Fridays to support work-life balance.
-3. Proactive Wellness Interventions
-Individual tracking reveals high SL Count % for specific employees (e.g., Ayanna Atkins at 0.18%, significantly higher than the 0.01% average).
-- Action: Managers should conduct "Stay Interviews" or wellness check-ins with employees showing high sick leave frequency. This ensures they are supported and helps prevent long-term burnout or absenteeism.
-4. Recognition for High Reliability
-Employees like Alexander Davenport and Alyson Huber maintain 100% Presence.
-- Action: Implement a "Reliability Award" or recognition program for top-tier attendance to reinforce a culture of consistency and dedication.
+
+**Insights**
+- Sales department has the highest project budget allocation (~$150K), indicating a strong focus on revenue-driven initiatives
+- Engineering and Marketing also receive significant funding, supporting product development and brand growth
+Human Resources shows lower capital allocation, suggesting underinvestment in employee engagement initiatives
+- A noticeable portion of projects are still upcoming (~64%), indicating future financial commitments
+- Some departments show high salary costs relative to project cost, which may affect profitability
+
+**Recommendations**
+
+- Audit HR Spending: Investigate the negative capital in the HR department to see if operational efficiencies can be improved or if the data reflects a specific one-time investment.
+
+- Reallocate Sales Budget: Since Sales is the highest contributor to capital, consider shifting budget from lower-performing "Upcoming" projects in IT or Engineering to Sales to maximize ROI.
+
+- Project Milestone Review: Given the high percentage of "Upcoming" projects, management should implement a monthly milestone review to ensure these projects don't exceed their $1.6M total budget.
+
+### Tech Stack
+Tool: Power BI Desktop
+
+Data Source: Excel / SQL (Internal HR & Project Logs)
+
+Visuals: Custom KPI Cards, Donut Charts, Stacked Bar Charts, Table with Conditional Formatting.
 
 
