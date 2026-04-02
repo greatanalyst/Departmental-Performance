@@ -37,11 +37,12 @@ This project focuses on analyzing organizational project performance across mult
 - Which departments are currently over-utilizing resources on "upcoming" vs. "completed" projects?
   
 ### Aim of the Project
-1. Identify Departments and Projects in the Red: Understand which departments or projects are over budget or underperforming, so we can take corrective action.
 
-2. Data Organization: Ensure that data from various sources (e.g., employee information, salary data, department budgets, and project details) is structured correctly and accessible for reporting
+- Identify Departments and Projects in the Red: Understand which departments or projects are over budget or underperforming, so we can take corrective action.
 
-3. Power BI Dashboard Development: Collaborate with us to create a comprehensive dashboard that provides visibility into employee performance, salary distribution, and departmental project management.:
+- Data Organization: Ensure that data from various sources (e.g., employee information, salary data, department budgets, and project details) is structured correctly and accessible for reporting
+
+- Power BI Dashboard Development: Collaborate with us to create a comprehensive dashboard that provides visibility into employee performance, salary distribution, and departmental project management.:
 
 
   
@@ -54,7 +55,7 @@ Step 1: Data Cleaning Tool: Microsoft SQL
 )(assignment_id	employee_id	project_id) etc..
 
 
--Joined Tables and Queried the data : 
+- Joined Tables and Queried the data : 
 The following Microsoft SQL queries  was used to query the data and formulate a table
 
 ` with project_status as (
@@ -97,8 +98,7 @@ Step 2:Power BI
 - Relationships: Established a One-to-Many relationship between the Employee Master list and the Attendance Fact table.
 
 Step 3: DAX Measure Development
-
- I authored several custom columsa and formulate a reference table to calculate the KPIs seen on the dashboard:
+- I authored several custom columsa and formulate a reference table to calculate the KPIs seen on the dashboard:
  <img width="1002" height="777" alt="image" src="https://github.com/user-attachments/assets/642fd282-e3b3-44bc-8db2-e883464cc3ae" />
  <img width="1910" height="768" alt="image" src="https://github.com/user-attachments/assets/e63bfab4-6b60-4d9c-8cb5-0731239843c5" />
 
@@ -140,7 +140,7 @@ Human Resources shows lower capital allocation, suggesting underinvestment in em
 - Project Milestone Review: Given the high percentage of "Upcoming" projects, management should implement a monthly milestone review to ensure these projects don't exceed their $1.6M total budget.
 
 ### Tech Stack
-Tool: Power BI Desktop
+Tool: Power BI Desktop, Excel, SQL 
 
 Data Source: Excel / SQL (Internal HR & Project Logs)
 
