@@ -11,7 +11,7 @@
 - [Tech Stack](#tech-stack)
 
 
-### Description 
+## Description 
 The Project Review Overview Dashboard is a data visualization project built using Power BI and SQL  to analyze and monitor organizational project performance. It provides a comprehensive view of project budgets, costs, departmental contributions, and employee-level insights in a single interactive interface.
 
 The dashboard enables users to track how financial resources are allocated across departments such as Sales, Marketing, Engineering, IT, and Human Resources, while also comparing project status (completed vs. upcoming). It integrates key business metrics like capital investment, salary costs, and project budgets to support effective decision-making.
@@ -21,11 +21,11 @@ With dynamic filtering options and detailed visualizations, the project helps st
 ![WhatsApp Image 2026-04-02 at 1 43 58 PM](https://github.com/user-attachments/assets/a810c319-34a6-4c62-8197-e36c34017419)
 
 
-### Business Introduction
+## Business Introduction
 
 This project focuses on analyzing organizational project performance across multiple departments. It provides a centralized view of project budgets, costs, employee contributions, and departmental efficiency. The dashboard is designed to support decision-makers in monitoring financial performance and optimizing resource allocation.
 
-### Business Problem
+## Business Problem
 - Management often struggles to see the "big picture" when individual employee data is siloed from project financial data. Specifically, the company needed to answer:
 - Are departments staying within their allocated project budgets?
 - How does salary cost compare to the actual capital generated or spent by each department?
@@ -36,7 +36,7 @@ This project focuses on analyzing organizational project performance across mult
 - Challenges in comparing project status (completed vs. ongoing)
 - Which departments are currently over-utilizing resources on "upcoming" vs. "completed" projects?
   
-### Aim of the Project
+## Aim of the Project
 
 - Identify Departments and Projects in the Red: Understand which departments or projects are over budget or underperforming, so we can take corrective action.
 
@@ -46,7 +46,7 @@ This project focuses on analyzing organizational project performance across mult
 
 
   
-### Solution
+## Solution
 
 This project followed a standard Data Analysis Expression (DAX) and ETL (Extract, Transform, Load) workflow.
 
@@ -102,7 +102,7 @@ Step 3: DAX Measure Development
  <img width="1002" height="777" alt="image" src="https://github.com/user-attachments/assets/642fd282-e3b3-44bc-8db2-e883464cc3ae" />
  <img width="1910" height="768" alt="image" src="https://github.com/user-attachments/assets/e63bfab4-6b60-4d9c-8cb5-0731239843c5" />
 
-###  Metrics Defined 
+##  Metrics Defined 
 
 - Total Capital Invested: $1.29M
 - Total Project Budget: $60K
@@ -112,7 +112,7 @@ Step 3: DAX Measure Development
 - Project Status Distribution: Completed vs. Upcoming projects
 - Budget Allocation: Budget assigned per project and department
   
-### Features
+## Features
 
 - Employee Profile Card: Displays headshot, job title, and salary for quick HR reference.
 
@@ -122,7 +122,7 @@ Step 3: DAX Measure Development
 
 - Ranking Bars: Horizontal bar charts showing "Project Budget by Project Name" to identify the most expensive initiatives (e.g., "Product Launch" at $80k).
 
-###  Insights And Recommendations
+##  Insights And Recommendations
 
 **Insights**
 - Sales department has the highest project budget allocation (~$150K), indicating a strong focus on revenue-driven initiatives
@@ -139,7 +139,7 @@ Human Resources shows lower capital allocation, suggesting underinvestment in em
 
 - Project Milestone Review: Given the high percentage of "Upcoming" projects, management should implement a monthly milestone review to ensure these projects don't exceed their $1.6M total budget.
 
-### Tech Stack
+## Tech Stack
 Tool: Power BI Desktop, Excel, SQL 
 
 Data Source: Excel / SQL (Internal HR & Project Logs)
