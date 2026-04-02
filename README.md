@@ -8,6 +8,7 @@
 - [Metrics Defined](#metrics-defined)
 - [Features](#features)
 - [Insights And Recommendations](#insights-and-recommendations)
+- [Tech Stack](#tech-stack)
 
 
 ### Description 
@@ -46,7 +47,6 @@ This project focuses on analyzing organizational project performance across mult
   
 ### Solution
 
-
 This project followed a standard Data Analysis Expression (DAX) and ETL (Extract, Transform, Load) workflow.
 
 Step 1: Data Cleaning Tool: Microsoft SQL
@@ -70,10 +70,10 @@ project_id,
 project_name,
 project_budget,
 'completed' as status
-from completed_projects)
+from completed_projects)`
 
 
-select
+`select
 e.employee_id,
 e.first_name,
 e.last_name,
@@ -91,21 +91,18 @@ on pa.employee_id = e.employee_id
 join project_status p
 on p.project_id = pa.project_id `
 
-
 Step 2:Power BI 
 - Calendar Table: Created a dedicated Date Table to allow for time-intelligence functions (filtering byEmploy_ID, Headshot, and Department).
 
 - Relationships: Established a One-to-Many relationship between the Employee Master list and the Attendance Fact table.
 
-  
-
 Step 3: DAX Measure Development
 
- I authored several custom measures to calculate the KPIs seen on the dashboard:
+ I authored several custom columsa and formulate a reference table to calculate the KPIs seen on the dashboard:
  <img width="1002" height="777" alt="image" src="https://github.com/user-attachments/assets/642fd282-e3b3-44bc-8db2-e883464cc3ae" />
  <img width="1910" height="768" alt="image" src="https://github.com/user-attachments/assets/e63bfab4-6b60-4d9c-8cb5-0731239843c5" />
 
-### 📏 Metrics Defined
+###  Metrics Defined 
 
 - Total Capital Invested: $1.29M
 - Total Project Budget: $60K
@@ -115,7 +112,7 @@ Step 3: DAX Measure Development
 - Project Status Distribution: Completed vs. Upcoming projects
 - Budget Allocation: Budget assigned per project and department
   
-### ⚙️ Features
+### Features
 
 - Employee Profile Card: Displays headshot, job title, and salary for quick HR reference.
 
