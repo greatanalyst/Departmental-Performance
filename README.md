@@ -58,7 +58,8 @@ Step 1: Data Cleaning Tool: Microsoft SQL
 - Joined Tables and Queried the data : 
 The following Microsoft SQL queries  was used to query the data and formulate a table
 
-` with project_status as (
+```sql
+ with project_status as (
 select
 project_id,
 project_name,
@@ -91,6 +92,7 @@ join project_assignments pa
 on pa.employee_id = e.employee_id
 join project_status p
 on p.project_id = pa.project_id `
+```
 
 Step 2:Power BI 
 - Calendar Table: Created a dedicated Date Table to allow for time-intelligence functions (filtering byEmploy_ID, Headshot, and Department).
